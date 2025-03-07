@@ -69,9 +69,58 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p style="padding-left: 90px;"><a href="http://229.cycu.org/Blender4.2.7z">Blender4.2.7z</a></p>
 <p>透過教學影片把python升級，在升級 Python 版本時，我遇到了<span style="background-color: #00ccff;"> Python 3.10</span> 與 <span style="background-color: #00ccff;">3.13</span> 的<span style="background-color: #00ccff;">衝突問題</span>，導致 <code data-end="81" data-start="76">pip</code> 無法正常運行。詢問chatgpt後，錯誤的訊息顯示 <code data-end="111" data-start="96">python310.dll</code> 與 <code data-end="127" data-start="114">Python 3.13</code> 不兼容。為解決此問題，我檢查了系統中的 <span style="background-color: #00ccff;">Python 版本 (<code data-end="173" data-start="159">where python</code>)</span>，並調整 <code data-end="185" data-start="179">PATH</code> 變數，移除舊版本的路徑。最後，我重新安裝 <code data-end="212" data-start="207">pip</code>，或<span style="background-color: #00ccff;">直接使用 <code data-end="234" data-start="219">python -m pip</code> 執行命令</span>，成功修復環境並正常運行 Python 3.13。</p>
 <h2>W3</h2>
-<h3>task2</h3>
-<p><span style="background-color: #ffcc00;"> (使用 SSH 協定執行作業倉儲的推送):</span></p>
-<h1>Homework</h1>
+<h3>list2</h3>
+<p><span>目前班上尚未納組的學員學號</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import urllib.request
+
+# 設定 URL
+url = "https://mde.tw/list/2a.txt"
+
+# 讀取網站內容
+response = urllib.request.urlopen(url)
+data = response.read()  # 讀取原始資料
+
+# 檢查是否為 bytes，若是則解碼
+if isinstance(data, bytes):
+    data = data.decode('utf-8')
+
+# 分割行
+data_lines = data.splitlines()
+
+# 確保資料存在
+if len(data_lines) &gt; 1:
+    all_stud = data_lines[1:]  # 跳過標題列
+    print("總共有 " + str(len(all_stud)) + " 名學員")
+else:
+    all_stud = []
+    print("學員名單讀取失敗")
+
+# 已分組學員帳號
+grouped_accounts = {
+    '41223154', '41271125', '41271158', '41271146', '41271131', 'CYG41223103', '41223102', '41023128', '41023137', '41223137', '41223157', '41223156', 'otakuyoyo', '41223141', '41223113', 'kim41223114', 'joeisme1208', '41223116', '41223144', '41223140', '41223143', '41223138', '41223134', '41223136', 'zhe41223118', 'Spirit0224', 'yuhao-08', '41223158', 'Ren911308', '41223150', 'Manto8', 'CYA41223106', 'yan21ed', 'Lin41223107', '41223133', 'hong41223129', '41223110', '41223147', 'Linjiahong41223125', 'CHN41223132', 'Yu-Fang-Hong', '41023111', 'yckaooooo', 'kolas911205', '41023105', '40932134', '41223104', 'yan41223101', '41223105', '41223153', '41223120', '41223152', 'G8People', 'WSE41223112', '41223146', '41223119'
+}
+
+# 未分組學員清單
+ungrouped_accounts = []
+
+for student in all_stud:
+    parts = student.split()  # 用空格分割學號和帳號
+    if len(parts) == 1:
+        student_id = parts[0]
+        account = student_id  # 如果沒有帳號，將學號當作帳號
+    elif len(parts) == 2:
+        student_id, account = parts
+    
+    account = account.strip()
+    
+    # 如果帳號不在已分組帳號清單中，則加入未分組學員清單
+    if account not in grouped_accounts:
+        ungrouped_accounts.append(student_id)
+
+# 顯示未分組學員的學號
+print("未分組學員學號清單：", ungrouped_accounts)</pre>
+<p>總共有 60 名學員<br/>未分組學員學號清單： ['41023220', '41223111', '41223124', '41223148']<br/>&lt;completed in 46.10 ms&gt;</p><h3>task2</h3>
+<p><span style="background-color: #ffcc00;"> (使用 SSH 協定執行作業倉儲的推送):</span></p><h1>Homework</h1>
 <p>作業 (30%)</p>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p style="padding-left: 30px;">part1:</p>

@@ -2,7 +2,7 @@
         <head>
         <title>cd_hw</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H3">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
@@ -142,34 +142,57 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">task2 << <a href='task2.html'>Previous</a> <a href='HW1.html'>Next</a> >> HW1<br /><h1>Homework</h1>
-<p>作業 (30%)</p>
-<p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p style="padding-left: 30px;">part1:</p>
-<p style="padding-left: 60px;">請各學員在 USB 隨身碟或個人電腦上完成 cd2025 課程所需的可攜系統配置:</p>
-<p style="padding-left: 90px;">下載 <a href="http://229.cycu.org/portable_wcm2025.7z">portable_wcm2025.7z</a> (330MB, 解開壓縮後 1.4GB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Webots_2025a.7z">Webots_2025a.7z</a> (1.5 GB, 解開後約為 2.9GB, 可單獨運作)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Webots_2025a_web.7z">Webots_2025a_web.7z</a> (171 MB, 解開壓縮後約為 1GB, 必須連網運作)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Blender4.2.7z">Blender4.2.7z</a></p>
-<p style="padding-left: 30px;">part2:</p>
-<p style="padding-left: 60px;">請各學員完成可攜程式系統配置後, 利用 Webots R2025a 中寬度與高度都為 0.1m 的 box 物件建立一個簡單的平面四連桿機構模擬場景.</p>
-<p style="padding-left: 60px;">base (基座) 長度 1m, link1 長度 0.4m, link2 長度 0.6m, link3 長度 0.9m, 各轉軸均為 HingeJoint, joint1 旋轉速度設定為 1radian/sec.</p>
-<p style="padding-left: 30px;">part3:</p>
-<p style="padding-left: 60px;">模擬場景啟動後, 按下 s 鍵機構開始作動, 按下 p 鍵後機構暫停.</p>
-<p style="padding-left: 30px;">參考資料:</p>
-<p style="padding-left: 60px;"><a href="./../downloads/cd2025_hw1_demo.7z">cd2025_hw1_demo.7z</a></p>
-<p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
-<p style="padding-left: 30px;">各學員請利用 CAD 系統依據 HW1 的連桿尺寸與運動方式, 配置適當大小的旋轉軸以及基座後, 利用 Webots R2025a 完成一個簡單的平面四連桿機構模擬場景.</p>
-<p style="padding-left: 30px;">參考資料:</p>
-<p style="padding-left: 60px;"><a href="./../downloads/fourbar_slvs.7z">fourbar_slvs.7z</a></p>
-<p>HW3 (20%):<span style="background-color: #ffff00;">建立 Webots 桌上籃球遊戲機模擬系統</span></p>
-<p style="padding-left: 30px;">請各分組利用CAD 系統建立一個能在電腦桌 (1600W X 700D X 740H mm) 上運作的投籃機構 (<a href="https://www.youtube.com/watch?v=LloG_Jn_TI0&amp;t=51s">參考影片</a>)後, 導入 Webots R2025a 套件, 建立一個能由使用者透過鍵盤按鍵操作, 且具備計分板的籃球遊戲機模擬系統.</p>
-<p style="padding-left: 30px;">參考資料:</p>
-<p>參考資料:</p>
-<p style="padding-left: 30px;"><a href="./../downloads/fourbar_ball_throwing_linkage.slvs">fourbar_ball_throwing_linkage.slvs</a></p>
-<p style="padding-left: 30px;"><a href="./../downloads/sixbar_ball_throwing_linkage.slvs">sixbar_ball_throwing_linkage.slvs</a></p>
-<p style="padding-left: 30px;"><img alt="" height="264" src="./../images/fourbar_ball_throwing_linkage.gif" width="400"/></p>
-<br />task2 << <a href='task2.html'>Previous</a> <a href='HW1.html'>Next</a> >> HW1</div>
+    <div id="tipue_search_content">W3 << <a href='W3.html'>Previous</a> <a href='task2.html'>Next</a> >> task2<br /><h1>list2</h1>
+<p><span>目前班上尚未納組的學員學號</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import urllib.request
+
+# 設定 URL
+url = "https://mde.tw/list/2a.txt"
+
+# 讀取網站內容
+response = urllib.request.urlopen(url)
+data = response.read()  # 讀取原始資料
+
+# 檢查是否為 bytes，若是則解碼
+if isinstance(data, bytes):
+    data = data.decode('utf-8')
+
+# 分割行
+data_lines = data.splitlines()
+
+# 確保資料存在
+if len(data_lines) &gt; 1:
+    all_stud = data_lines[1:]  # 跳過標題列
+    print("總共有 " + str(len(all_stud)) + " 名學員")
+else:
+    all_stud = []
+    print("學員名單讀取失敗")
+
+# 已分組學員帳號
+grouped_accounts = {
+    '41223154', '41271125', '41271158', '41271146', '41271131', 'CYG41223103', '41223102', '41023128', '41023137', '41223137', '41223157', '41223156', 'otakuyoyo', '41223141', '41223113', 'kim41223114', 'joeisme1208', '41223116', '41223144', '41223140', '41223143', '41223138', '41223134', '41223136', 'zhe41223118', 'Spirit0224', 'yuhao-08', '41223158', 'Ren911308', '41223150', 'Manto8', 'CYA41223106', 'yan21ed', 'Lin41223107', '41223133', 'hong41223129', '41223110', '41223147', 'Linjiahong41223125', 'CHN41223132', 'Yu-Fang-Hong', '41023111', 'yckaooooo', 'kolas911205', '41023105', '40932134', '41223104', 'yan41223101', '41223105', '41223153', '41223120', '41223152', 'G8People', 'WSE41223112', '41223146', '41223119'
+}
+
+# 未分組學員清單
+ungrouped_accounts = []
+
+for student in all_stud:
+    parts = student.split()  # 用空格分割學號和帳號
+    if len(parts) == 1:
+        student_id = parts[0]
+        account = student_id  # 如果沒有帳號，將學號當作帳號
+    elif len(parts) == 2:
+        student_id, account = parts
+    
+    account = account.strip()
+    
+    # 如果帳號不在已分組帳號清單中，則加入未分組學員清單
+    if account not in grouped_accounts:
+        ungrouped_accounts.append(student_id)
+
+# 顯示未分組學員的學號
+print("未分組學員學號清單：", ungrouped_accounts)</pre>
+<p>總共有 60 名學員<br/>未分組學員學號清單： ['41023220', '41223111', '41223124', '41223148']<br/>&lt;completed in 46.10 ms&gt;</p><br />W3 << <a href='W3.html'>Previous</a> <a href='task2.html'>Next</a> >> task2</div>
         
     <!-- footer -->
       <div class="container">
