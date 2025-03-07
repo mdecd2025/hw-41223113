@@ -70,7 +70,7 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p>透過教學影片把python升級，在升級 Python 版本時，我遇到了<span style="background-color: #00ccff;"> Python 3.10</span> 與 <span style="background-color: #00ccff;">3.13</span> 的<span style="background-color: #00ccff;">衝突問題</span>，導致 <code data-end="81" data-start="76">pip</code> 無法正常運行。詢問chatgpt後，錯誤的訊息顯示 <code data-end="111" data-start="96">python310.dll</code> 與 <code data-end="127" data-start="114">Python 3.13</code> 不兼容。為解決此問題，我檢查了系統中的 <span style="background-color: #00ccff;">Python 版本 (<code data-end="173" data-start="159">where python</code>)</span>，並調整 <code data-end="185" data-start="179">PATH</code> 變數，移除舊版本的路徑。最後，我重新安裝 <code data-end="212" data-start="207">pip</code>，或<span style="background-color: #00ccff;">直接使用 <code data-end="234" data-start="219">python -m pip</code> 執行命令</span>，成功修復環境並正常運行 Python 3.13。</p>
 <h2>W3</h2>
 <h3>list2</h3>
-<p><span>目前班上尚未納組的學員學號</span></p>
+<p><span style="background-color: #ffcc00;">目前班上尚未納組的學員學號:</span></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import urllib.request
 
 # 設定 URL
@@ -119,7 +119,7 @@ for student in all_stud:
 
 # 顯示未分組學員的學號
 print("未分組學員學號清單：", ungrouped_accounts)</pre>
-<p></p><h3>task2</h3>
+<p>總共有 60 名學員<br/>未分組學員學號清單： ['41023220', '41223111', '41223124', '41223148']<br/>&lt;completed in 46.10 ms&gt;</p><h3>task2</h3>
 <p><span style="background-color: #ffcc00;"> (使用 SSH 協定執行作業倉儲的推送):</span></p><h1>Homework</h1>
 <p>作業 (30%)</p>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
