@@ -12,65 +12,8 @@
 <p style="padding-left: 30px;">Homework (30%) - 每週至少提交兩次與課程進度有關的內容, 完成後填回自評表單</p>
 <p style="padding-left: 30px;">Exam (40%) - 建立包含操作流程影片、心得以及提供檔案下載的網頁後填回自評表單</p>
 <p style="padding-left: 30px;">Final Report (30%) - 利用網頁內容進行簡報並提交 pdf 格式書面報告, 完成後填回自評表單</p>
-<h1>Tasks</h1>
-<h2>W1</h2>
-<h3>list</h3>
-<p><span style="background-color: #ffcc00;">顯示我們全部組員的倉儲和網站:</span></p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"></pre>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html, document, ajax
- 
-# 目標 URL
-url = "https://mde.tw/list/2a.txt"
- 
-# G2 組員學號清單
-g2_members = {"41223113", "41223114", "41223116", "41223130", "41223141", "41223149"}
- 
-# 定義回呼函式來處理資料
-def on_complete(req):
-    if req.status == 200:
-        data = req.text.splitlines()  # 以換行分割成數列
-        all_stud = [line.strip() for line in data[1:] if line.strip()]  # 移除空白並排除空行
- 
-        # 取得網頁上的 div 來顯示內容
-        brython_div1 = document["brython_div1"]
- 
-        # 過濾 G2 組員
-        g2_list = []
-        for student in all_stud:
-            parts = student.split()  # 用空白分割
-            if len(parts) == 2:
-                student_id, student_account = parts
-                if student_id in g2_members:
-                    g2_list.append((student_id, student_account))
- 
-        # 顯示組員數量
-        brython_div1 &lt;= f"G2 組別 - 組員共 {len(g2_list)} 名"
-        brython_div1 &lt;= html.BR() * 2
- 
-        # 逐行顯示 G2 組員
-        for student_id, student_account in g2_list:
-            # 學號超連結
-            student_id_link = html.A(student_id, href=f"https://mdecd2025.github.io/hw-{student_account}", target="_blank")
- 
-            # 帳號超連結
-            github_link = html.A(student_account, href=f"https://github.com/mdecd2025/hw-{student_account}", target="_blank")
- 
-            # 插入內容
-            brython_div1 &lt;= student_id_link + " : " + github_link
-            brython_div1 &lt;= html.BR()
- 
-# 發送 AJAX 請求
-ajax.get(url, oncomplete=on_complete)</pre>
-<p><span style="background-color: #ffcc00;">G2 組別 - 組員共 6 名</span><br/><br/><a href="https://mdecd2025.github.io/hw-41223113" target="_blank">41223113</a><span> : </span><a href="https://github.com/mdecd2025/hw-41223113" target="_blank">41223113</a><br/><a href="https://mdecd2025.github.io/hw-kim41223114" target="_blank">41223114</a><span> : </span><a href="https://github.com/mdecd2025/hw-kim41223114" target="_blank">kim41223114</a><br/><a href="https://mdecd2025.github.io/hw-41223116" target="_blank">41223116</a><span> : </span><a href="https://github.com/mdecd2025/hw-41223116" target="_blank">41223116</a><br/><a href="https://mdecd2025.github.io/hw-joeisme1208" target="_blank">41223130</a><span> : </span><a href="https://github.com/mdecd2025/hw-joeisme1208" target="_blank">joeisme1208</a><br/><a href="https://mdecd2025.github.io/hw-41223141" target="_blank">41223141</a><span> : </span><a href="https://github.com/mdecd2025/hw-41223141" target="_blank">41223141</a><br/><a href="https://mdecd2025.github.io/hw-otakuyoyo" target="_blank">41223149</a><span> : </span><a href="https://github.com/mdecd2025/hw-otakuyoyo" target="_blank">otakuyoyo</a><br/><br/><br/></p>
-<h3>task1</h3>
-<p>在 USB 隨身碟或個人電腦上完成 cd2025 課程所需的可攜系統配置:</p>
-<p style="padding-left: 90px;">下載<span> </span><a href="http://229.cycu.org/portable_wcm2025.7z">portable_wcm2025.7z</a><span> </span>(330MB, 解開壓縮後 1.4GB)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Webots_2025a.7z">Webots_2025a.7z</a><span> </span>(1.5 GB, 解開後約為 2.9GB, 可單獨運作)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Webots_2025a_web.7z">Webots_2025a_web.7z</a><span> </span>(171 MB, 解開壓縮後約為 1GB, 必須連網運作)</p>
-<p style="padding-left: 90px;"><a href="http://229.cycu.org/Blender4.2.7z">Blender4.2.7z</a></p>
-<p>透過教學影片把python升級，在升級 Python 版本時，我遇到了<span style="background-color: #00ccff;"> Python 3.10</span> 與 <span style="background-color: #00ccff;">3.13</span> 的<span style="background-color: #00ccff;">衝突問題</span>，導致 <code data-end="81" data-start="76">pip</code> 無法正常運行。詢問chatgpt後，錯誤的訊息顯示 <code data-end="111" data-start="96">python310.dll</code> 與 <code data-end="127" data-start="114">Python 3.13</code> 不兼容。為解決此問題，我檢查了系統中的 <span style="background-color: #00ccff;">Python 版本 (<code data-end="173" data-start="159">where python</code>)</span>，並調整 <code data-end="185" data-start="179">PATH</code> 變數，移除舊版本的路徑。最後，我重新安裝 <code data-end="212" data-start="207">pip</code>，或<span style="background-color: #00ccff;">直接使用 <code data-end="234" data-start="219">python -m pip</code> 執行命令</span>，成功修復環境並正常運行 Python 3.13。</p>
-<h2>W3</h2>
-<h3>list2</h3>
+<h1>Week</h1>
+<h2>w3</h2>
 <p><span style="background-color: #ffcc00;">目前班上尚未納組的學員學號:更新前</span></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import urllib.request
 
@@ -129,7 +72,7 @@ for student in all_stud:
 # 顯示未分組學員的學號
 print("未分組學員學號清單：", ungrouped_accounts)</pre>
 <p>總共有 60 名學員<br/>未分組學員學號清單： ['41023220', '41223111', '41223124', '41223148']<br/>&lt;completed in 46.10 ms&gt;</p>
-<p><span style="background-color: #ffcc00;">目前班上尚未納組的學員學號:以更新過後<span style="background-color: #ffcc00;"></span></span></p>
+<p><span style="background-color: #ffcc00;">目前班上尚未納組的學員學號:以更新過後</span></p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html, document
 import urllib.request
 
@@ -176,17 +119,7 @@ for index, student in enumerate(all_stud, start=1):
         brython_div1 &lt;= html.BR()  # 換行
     else:
         print(f"帳號 {account} 已分組，跳過顯示")</pre>
-<p></p>
-<h3>task2</h3>
-<p><span style="background-color: #ffcc00;"> (使用 SSH 協定執行作業倉儲的推送):</span></p>
-<p><span style="background-color: #ffcc00;"><img caption="false" height="288" src="/images/螢幕擷取畫面 2025-03-21 143212.png" width="400"/></span></p>
-<p><span style="background-color: #ffcc00;"><img alt="" height="207" src="/images/螢幕擷取畫面 2025-03-21 143242.png" width="400"/></span></p>
-<p><span style="background-color: #ffcc00;"><img alt="" height="359" src="/images/螢幕擷取畫面 2025-03-21 143144.png" width="398"/>\</span></p>
-<p><span style="background-color: #ffcc00;"><img alt="" height="360" src="/images/螢幕擷取畫面 2025-03-21 143155.png" width="400"/></span></p>
-<p><span style="background-color: #ffcc00;"><img alt="" height="360" src="/images/螢幕擷取畫面 2025-03-21 143202.png" width="400"/></span></p>
-<p><span style="background-color: #ffcc00;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/z__ZWYdWw-4" width="560"></iframe></span></p>
-<h2>W5</h2>
-<h3>task5</h3>
+<h2>w5</h2>
 <h4><span style="background-color: #ffcc00;">Webots Tutorial 1 ~3 (HW3)</span></h4>
 <p><span style="background-color: #ffffff;">Q1:請<span>用繁體中文詳細說明下列資料: </span><a href="https://cyberbotics.com/doc/guide/introduction-to-webots">https://cyberbotics.com/doc/guide/introduction-to-webots </a></span></p>
 <p><span style="background-color: #ffffff;">Q2:請<span>整理 </span><a href="https://cyberbotics.com/doc/guide/introduction-to-webots">https://cyberbotics.com/doc/guide/introduction-to-webots</a><span> 中重要的英文單字與用法, 並且針對其中所使用的英文文法逐句說明.</span></span></p>
@@ -211,8 +144,8 @@ for index, student in enumerate(all_stud, start=1):
 </ul>
 <h4 data-end="501" data-start="480">Webots 需要的基本知識</h4>
 <ul data-end="630" data-start="502">
-<li data-end="582" data-start="502">需具備 <strong data-end="538" data-start="508">C、C++、Java、Python 或 MATLAB</strong> 的基礎編程能力來控制機器人（若不會編程，可使用 BotStudio 圖形化工具）。</li>
-<li data-end="630" data-start="583">若要建立自訂機器人或物件，需具備基本 <strong data-end="624" data-start="604">3D 設計與 VRML97 語言</strong> 知識。</li>
+<li data-end="582" data-start="502">需具備<span> </span><strong data-end="538" data-start="508">C、C++、Java、Python 或 MATLAB</strong><span> </span>的基礎編程能力來控制機器人（若不會編程，可使用 BotStudio 圖形化工具）。</li>
+<li data-end="630" data-start="583">若要建立自訂機器人或物件，需具備基本<span> </span><strong data-end="624" data-start="604">3D 設計與 VRML97 語言</strong><span> </span>知識。</li>
 </ul>
 <h4 data-end="648" data-start="632">如何獲取用戶支持？</h4>
 <ul data-end="854" data-start="649">
@@ -228,7 +161,7 @@ for index, student in enumerate(all_stud, start=1):
 </ul>
 <h4 data-end="875" data-start="856">Webots 模擬的組成</h4>
 <ul data-end="1043" data-start="876">
-<li data-end="938" data-start="876"><strong data-end="892" data-start="878">世界檔 (.wbt)</strong>：描述機器人與環境，包括物件的 <strong data-end="922" data-start="908">位置、外觀、物理特性</strong> 等（類似 VRML97）。</li>
+<li data-end="938" data-start="876"><strong data-end="892" data-start="878">世界檔 (.wbt)</strong>：描述機器人與環境，包括物件的<span> </span><strong data-end="922" data-start="908">位置、外觀、物理特性</strong><span> </span>等（類似 VRML97）。</li>
 <li data-end="1002" data-start="939"><strong data-end="950" data-start="941">控制器程式</strong>（C/C++/Java/Python/MATLAB）：用於控制機器人，可多個機器人共用相同控制程式。</li>
 <li data-end="1043" data-start="1003"><strong data-end="1017" data-start="1005">物理插件（選用）</strong>：可調整 Webots 物理行為（C/C++）。</li>
 </ul>
@@ -237,21 +170,82 @@ for index, student in enumerate(all_stud, start=1):
 <ul data-end="1275" data-start="1154">
 <li data-end="1183" data-start="1154"><strong data-end="1165" data-start="1156">編譯型語言</strong>（C、C++）：需編譯為執行檔。</li>
 <li data-end="1223" data-start="1184"><strong data-end="1194" data-start="1186">直譯語言</strong>（Python、MATLAB）：需安裝對應的運行環境。</li>
-<li data-end="1275" data-start="1224"><strong data-end="1234" data-start="1226">混合語言</strong>（Java）：需編譯為 <code data-end="1254" data-start="1246">.class</code> 或 <code data-end="1263" data-start="1257">.jar</code>，由 JVM 執行。</li>
+<li data-end="1275" data-start="1224"><strong data-end="1234" data-start="1226">混合語言</strong>（Java）：需編譯為<span> </span><code data-end="1254" data-start="1246">.class</code><span> </span>或<span> </span><code data-end="1263" data-start="1257">.jar</code>，由 JVM 執行。</li>
 </ul>
-<p data-end="1319" data-start="1277">控制器程式存放於 Webots 專案內的 <strong data-end="1313" data-start="1298">controllers</strong> 目錄。</p>
+<p data-end="1319" data-start="1277">控制器程式存放於 Webots 專案內的<span> </span><strong data-end="1313" data-start="1298">controllers</strong><span> </span>目錄。</p>
 <h4 data-end="1361" data-start="1321">什麼是 Supervisor Controller（監督控制器）？</h4>
-<p data-end="1421" data-start="1362">若機器人的 <strong data-end="1392" data-start="1368">supervisor 欄位設為 TRUE</strong>，則其控制器為 <strong data-end="1409" data-start="1400">監督控制器</strong>，擁有額外權限，如：</p>
+<p data-end="1421" data-start="1362">若機器人的<span> </span><strong data-end="1392" data-start="1368">supervisor 欄位設為 TRUE</strong>，則其控制器為<span> </span><strong data-end="1409" data-start="1400">監督控制器</strong>，擁有額外權限，如：</p>
 <ul data-end="1476" data-start="1422">
 <li data-end="1448" data-start="1422">控制模擬運行（移動機器人、錄製模擬畫面等）。</li>
 <li data-end="1476" data-start="1449">可用於高層級操作，而非單純模擬真實機器人行為。</li>
 </ul>
 <p data-end="1501" data-start="1478">監督控制器支援與一般控制器相同的編程語言。</p>
+<h1>Tasks</h1>
+<h2>task1</h2>
+<h3>list</h3>
+<p><span style="background-color: #ffcc00;">顯示我們全部組員的倉儲和網站:</span></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"></pre>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from browser import html, document, ajax
+ 
+# 目標 URL
+url = "https://mde.tw/list/2a.txt"
+ 
+# G2 組員學號清單
+g2_members = {"41223113", "41223114", "41223116", "41223130", "41223141", "41223149"}
+ 
+# 定義回呼函式來處理資料
+def on_complete(req):
+    if req.status == 200:
+        data = req.text.splitlines()  # 以換行分割成數列
+        all_stud = [line.strip() for line in data[1:] if line.strip()]  # 移除空白並排除空行
+ 
+        # 取得網頁上的 div 來顯示內容
+        brython_div1 = document["brython_div1"]
+ 
+        # 過濾 G2 組員
+        g2_list = []
+        for student in all_stud:
+            parts = student.split()  # 用空白分割
+            if len(parts) == 2:
+                student_id, student_account = parts
+                if student_id in g2_members:
+                    g2_list.append((student_id, student_account))
+ 
+        # 顯示組員數量
+        brython_div1 &lt;= f"G2 組別 - 組員共 {len(g2_list)} 名"
+        brython_div1 &lt;= html.BR() * 2
+ 
+        # 逐行顯示 G2 組員
+        for student_id, student_account in g2_list:
+            # 學號超連結
+            student_id_link = html.A(student_id, href=f"https://mdecd2025.github.io/hw-{student_account}", target="_blank")
+ 
+            # 帳號超連結
+            github_link = html.A(student_account, href=f"https://github.com/mdecd2025/hw-{student_account}", target="_blank")
+ 
+            # 插入內容
+            brython_div1 &lt;= student_id_link + " : " + github_link
+            brython_div1 &lt;= html.BR()
+ 
+# 發送 AJAX 請求
+ajax.get(url, oncomplete=on_complete)</pre>
+<p><span style="background-color: #ffcc00;">G2 組別 - 組員共 6 名</span><br/><br/><a href="https://mdecd2025.github.io/hw-41223113" target="_blank">41223113</a><span> : </span><a href="https://github.com/mdecd2025/hw-41223113" target="_blank">41223113</a><br/><a href="https://mdecd2025.github.io/hw-kim41223114" target="_blank">41223114</a><span> : </span><a href="https://github.com/mdecd2025/hw-kim41223114" target="_blank">kim41223114</a><br/><a href="https://mdecd2025.github.io/hw-41223116" target="_blank">41223116</a><span> : </span><a href="https://github.com/mdecd2025/hw-41223116" target="_blank">41223116</a><br/><a href="https://mdecd2025.github.io/hw-joeisme1208" target="_blank">41223130</a><span> : </span><a href="https://github.com/mdecd2025/hw-joeisme1208" target="_blank">joeisme1208</a><br/><a href="https://mdecd2025.github.io/hw-41223141" target="_blank">41223141</a><span> : </span><a href="https://github.com/mdecd2025/hw-41223141" target="_blank">41223141</a><br/><a href="https://mdecd2025.github.io/hw-otakuyoyo" target="_blank">41223149</a><span> : </span><a href="https://github.com/mdecd2025/hw-otakuyoyo" target="_blank">otakuyoyo</a><br/><br/><br/></p>
+<p>在 USB 隨身碟或個人電腦上完成 cd2025 課程所需的可攜系統配置:</p>
+<p style="padding-left: 90px;">下載<span> </span><a href="http://229.cycu.org/portable_wcm2025.7z">portable_wcm2025.7z</a><span> </span>(330MB, 解開壓縮後 1.4GB)</p>
+<p style="padding-left: 90px;"><a href="http://229.cycu.org/Webots_2025a.7z">Webots_2025a.7z</a><span> </span>(1.5 GB, 解開後約為 2.9GB, 可單獨運作)</p>
+<p style="padding-left: 90px;"><a href="http://229.cycu.org/Webots_2025a_web.7z">Webots_2025a_web.7z</a><span> </span>(171 MB, 解開壓縮後約為 1GB, 必須連網運作)</p>
+<p style="padding-left: 90px;"><a href="http://229.cycu.org/Blender4.2.7z">Blender4.2.7z</a></p>
+<p>透過教學影片把python升級，在升級 Python 版本時，我遇到了<span style="background-color: #00ccff;"> Python 3.10</span> 與 <span style="background-color: #00ccff;">3.13</span> 的<span style="background-color: #00ccff;">衝突問題</span>，導致 <code data-end="81" data-start="76">pip</code> 無法正常運行。詢問chatgpt後，錯誤的訊息顯示 <code data-end="111" data-start="96">python310.dll</code> 與 <code data-end="127" data-start="114">Python 3.13</code> 不兼容。為解決此問題，我檢查了系統中的 <span style="background-color: #00ccff;">Python 版本 (<code data-end="173" data-start="159">where python</code>)</span>，並調整 <code data-end="185" data-start="179">PATH</code> 變數，移除舊版本的路徑。最後，我重新安裝 <code data-end="212" data-start="207">pip</code>，或<span style="background-color: #00ccff;">直接使用 <code data-end="234" data-start="219">python -m pip</code> 執行命令</span>，成功修復環境並正常運行 Python 3.13。</p>
+<h2>task2</h2>
+<p><span style="background-color: #ffcc00;"> (使用 SSH 協定執行作業倉儲的推送):</span></p>
+<p><span style="background-color: #ffcc00;"><img caption="false" height="288" src="/images/螢幕擷取畫面 2025-03-21 143212.png" width="400"/></span></p>
+<p><span style="background-color: #ffcc00;"><img alt="" height="207" src="/images/螢幕擷取畫面 2025-03-21 143242.png" width="400"/></span></p>
+<p><span style="background-color: #ffcc00;"><img alt="" height="359" src="/images/螢幕擷取畫面 2025-03-21 143144.png" width="398"/>\</span></p>
+<p><span style="background-color: #ffcc00;"><img alt="" height="360" src="/images/螢幕擷取畫面 2025-03-21 143155.png" width="400"/></span></p>
+<p><span style="background-color: #ffcc00;"><img alt="" height="360" src="/images/螢幕擷取畫面 2025-03-21 143202.png" width="400"/></span></p>
+<p><span style="background-color: #ffcc00;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/z__ZWYdWw-4" width="560"></iframe></span></p>
 <p><span style="background-color: #ffcc00;"></span></p>
 <p><span style="background-color: #ffcc00;"></span></p>
-<p><span style="background-color: #ffcc00;"></span></p>
-<p></p>
-<p><span style="background-color: #ffffff;"></span></p>
 <h1>Homework</h1>
 <p>作業 (30%)</p>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
@@ -282,8 +276,9 @@ for index, student in enumerate(all_stud, start=1):
 <h2>HW1</h2>
 <p>HW1 (5%): <span style="background-color: #ffff00;">建立由 Box 組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW1 - 學員學號</p>
-<p></p>
-<h2>HW2</h2>
+<p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/R_bDkRsMahM" width="560"></iframe></p>
+<p></p><h2>HW2</h2>
+<h3>task3</h3>
 <p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p><span style="background-color: #00ffff;">利用fourbar_slvs資料夾內零件，繪製link-1</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/xYumahfXxqc" width="560"></iframe></p>
