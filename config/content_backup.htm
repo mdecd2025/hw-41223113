@@ -285,6 +285,8 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p></p>
 <p><span style="background-color: #00ffff;"><span>hw1-webots操作模擬影片</span></span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/R_bDkRsMahM" width="560"></iframe></p>
+<p><span style="background-color: #ffcc00;">心得:</span></p>
+<p><span style="background-color: #ffffff;">這段 Webots 世界檔雖然展現了多關節機械臂的結構設計，但在多重關節端點指向同一 Solid（如 link3）時，容易產生 kinematic loop，造成物理模擬不穩定。此外，外部控制器若未及時連線，機器人將無法正常運作。背景與光源資源依賴 GitHub 外部連結，若失效會影響場景完整性。物理參數未細緻設定，也可能影響模擬真實度。這些細節都提醒我們，設計複雜機械結構時需謹慎考慮模擬平台的限制與資源管理。</span></p>
 <p></p><h2>HW2 task3</h2>
 <p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p><span style="background-color: #00ffff;">利用fourbar_slvs資料夾內零件，繪製link-1</span></p>
