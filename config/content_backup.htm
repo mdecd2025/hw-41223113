@@ -314,7 +314,7 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/iWfdaVoTS7M" width="560"></iframe></span></p>
 <p><span></span><span style="background-color: #ffcc00;">心得:</span></p>
 <p><span>這份 Webots 世界檔展示了四連桿機構的建模，但多重關節指向同一 Solid，容易形成 kinematic loop，Webots 物理引擎對此支援有限，模擬時常出現不穩定或異常。外部資源與本地檔案路徑若有誤，模型將無法完整載入，影響仿真效果。物理參數未細緻設定，也會降低模擬的真實性。這些問題提醒我們，在設計複雜結構時需特別注意模擬平台的限制、資源管理及參數設定，以確保仿真穩定且可重現。</span></p>
-<p><span style="background-color: #ffcc00;">ai詢問優化建議:</span></p>
+<p><span style="background-color: #ffcc00;">詢問優化建議:</span></p>
 <p><span>這段優化建議提醒我們應避免 kinematic loop，透過簡化結構或使用 Webots 支援的 Constraint 來提升模擬穩定性。同時，將 EXTERNPROTO 和 CAD 模型本地化，確保路徑正確，避免載入失敗。明確設定每個 Solid 的質量與慣性，增強物理真實感。基座物件應補齊 boundingObject 和 Physics 屬性，並且命名上應有意義且唯一，方便維護與擴展。這些措施可提升模擬的穩定性與可維護性。</span></p>
 <p></p>
 <p><span></span></p>
