@@ -185,7 +185,8 @@ for index, student in enumerate(all_stud, start=1):
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/dThWMX-nFtY" width="560"></iframe></p>
 <p><span>國立虎尾科技大學 - 機械設計工程系 - cd2025 W16 HW2 - 41223113</span></p>
 <p><span><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/1WoBFcZwmZY" width="560"></iframe></span></p>
-<p></p><h1>Tasks</h1>
+<p></p>
+<h1>Tasks</h1>
 <h2>task1</h2>
 <h3>list</h3>
 <p><span style="background-color: #ffcc00;">顯示我們全部組員的倉儲和網站:</span></p>
@@ -295,8 +296,104 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span style="background-color: #ffffff;">這段 Webots 世界檔雖然展現了多關節機械臂的結構設計，但在多重關節端點指向同一 Solid（如 link3）時，容易產生 kinematic loop，造成物理模擬不穩定。此外，外部控制器若未及時連線，機器人將無法正常運作。背景與光源資源依賴 GitHub 外部連結，若失效會影響場景完整性。物理參數未細緻設定，也可能影響模擬真實度。這些細節都提醒我們，設計複雜機械結構時需謹慎考慮模擬平台的限制與資源管理。</span></p>
 <p><span style="background-color: #ffcc00;">詢問建議:</span></p>
 <p><span style="background-color: #ffffff;"><span>建議將 EXTERNPROTO 檔案下載到本地，引用本地路徑以提升穩定性；關節命名與結構應明確區分，避免重名或錯誤引用；此外，可加入預設控制器，確保即使外部控制器未連接，機器人也能執行基本動作，提升模擬的便利性與穩定性。</span></span></p>
-<p>hw1作業題問解答:</p>
-<p></p><h2>HW2 task3</h2>
+<p><span style="background-color: #ffcc00;">hw1作業題問解答:</span></p>
+<ol class="marker:text-textOff list-decimal">
+<li>
+<p class="my-0"><strong>在製作 HW1 之前是否實際練習 Tutorial1 與 Tutorial2?</strong><br/>必須先實際練習 Tutorial1 與 Tutorial2，熟悉 Webots 基本操作與控制器撰寫。</p>
+</li>
+<li>
+<p class="my-0"><strong>Webots 是什麼樣的軟體？它主要用途為何？</strong><br/>Webots 是跨平台機器人模擬軟體，用於機器人建模、控制演算法開發與教學研究。</p>
+</li>
+<li>
+<p class="my-0"><strong>在 Tutorial1 中，學習者需要操作的主要機器人模型名稱是什麼？</strong><br/>主要使用 e-puck 小型輪式移動機器人。</p>
+</li>
+<li>
+<p class="my-0"><strong>如何在 Webots 中建立並執行一個新的模擬世界（world）？</strong><br/>新建 .wbt 世界檔，添加物件與機器人，指定控制器，按 Play 執行模擬。</p>
+</li>
+<li>
+<p class="my-0"><strong>請說明如何讓機器人在模擬中移動，並指出相關的程式控制方式。</strong><br/>控制器設定馬達速度，透過時間步長迴圈更新馬達輸出，驅動機器人移動。</p>
+</li>
+<li>
+<p class="my-0"><strong>Tutorial1 中，學習者需要修改哪些參數或檔案來控制機器人的行為？</strong><br/>修改控制器程式檔案，調整馬達與感測器邏輯，並在 world 檔指定控制器名稱。</p>
+</li>
+<li>
+<p class="my-0"><strong>請簡述 Webots 控制器（controller）的功能及其與機器人的關係。</strong><br/>控制器讀取感測器資料並控制機器人動作，透過 API 與機器人互動。</p>
+</li>
+<li>
+<p class="my-0"><strong>在 Tutorial2 中，機器人需要完成什麼樣的任務或行為？</strong><br/>完成環境感知與自主避障任務。</p>
+</li>
+<li>
+<p class="my-0"><strong>Webots 中的 "Supervisor" 是什麼？它與一般機器人控制器有何不同？</strong><br/>Supervisor 是特殊控制器，能管理整個模擬環境，操作任意物件。</p>
+</li>
+<li>
+<p class="my-0"><strong>請說明如何在 Webots 中進行感測器數據的讀取與應用（例如距離感測器、攝影機）。</strong><br/>取得感測器裝置並啟動，在迴圈中讀取數據並應用於控制邏輯。</p>
+</li>
+<li>
+<p class="my-0"><strong>若要延伸 Tutorial2 讓機器人具備自主避障能力，你會怎麼設計與實作？</strong><br/>利用多個距離感測器判斷障礙物，設計避障策略，控制器中實作狀態機調整馬達速度。</p>
+</li>
+<li>
+<p class="my-0"><strong>請說明 Webots 中「時間步長（timestep）」的意義，以及它對模擬的影響。</strong><br/>時間步長為模擬更新間隔，影響精度與速度，步長越小精度越高。</p>
+</li>
+<li>
+<p class="my-0"><strong>如何在 Webots 中為機器人新增感測器？請說明基本步驟。</strong><br/>在 world 編輯器新增感測器節點，設定參數，控制器中取得並啟動感測器。</p>
+</li>
+<li>
+<p class="my-0"><strong>請說明如何將 Webots 控制器程式從 Python 改為 C 語言，並指出相關設定。</strong><br/>建立 C 程式，指定控制器名稱，使用 C API 編寫並編譯。</p>
+</li>
+<li>
+<p class="my-0"><strong>Tutorial1、2 中，若控制器程式有語法錯誤時，Webots 會如何反應？學員該如何排除？</strong><br/>顯示錯誤訊息，控制器無法執行，利用 Console 與 Debug 工具排錯。</p>
+</li>
+<li>
+<p class="my-0"><strong>如何將 Webots 世界（world）或機器人設定檔分享給他人，確保對方可順利開啟模擬？</strong><br/>分享完整專案資料夾，包含 .wbt、.proto、controllers 等。</p>
+</li>
+<li>
+<p class="my-0"><strong>如果想讓機器人在模擬時產生聲音或播放音樂，Webots 提供哪些方法？</strong><br/>使用 Sound 節點新增聲音來源，控制器可播放與停止音效。</p>
+</li>
+<li>
+<p class="my-0"><strong>請說明如何在 Webots 中同時操作多個機器人，並讓它們各自執行不同控制器。</strong><br/>新增多機器人節點，分別指定不同控制器名稱，Webots 啟動多控制器。</p>
+</li>
+<li>
+<p class="my-0"><strong>在 Webots 控制器中，如何獲得機器人的當前座標位置與朝向？</strong><br/>利用 Supervisor API 的 getPosition() 與 getOrientation()。</p>
+</li>
+<li>
+<p class="my-0"><strong>請說明 Webots 控制器中感測器資料的單位（例如距離感測器、加速度計），以及如何正確解讀。</strong><br/>距離感測器以公尺或毫米為單位，加速度計為 m/s²，依規格解讀。</p>
+</li>
+<li>
+<p class="my-0"><strong>如果想要錄製 Webots 模擬畫面並輸出成影片檔，該如何操作？</strong><br/>使用內建錄影功能或 Supervisor 指令錄製並輸出影片。</p>
+</li>
+<li>
+<p class="my-0"><strong>Webots 中的 PROTO 文件有什麼作用？與 world 檔（.wbt）的關係為何？</strong><br/>PROTO 定義物件模板，world 檔引用 PROTO 建立場景物件。</p>
+</li>
+<li>
+<p class="my-0"><strong>請說明如何在 Webots 中設定機器人的初始位置和方向。</strong><br/>修改機器人節點的 translation 與 rotation 屬性。</p>
+</li>
+<li>
+<p class="my-0"><strong>在 Tutorial1 或 Tutorial2 中，如何讓機器人執行預設外的自訂動作？</strong><br/>修改控制器程式，新增自訂函式並在主迴圈呼叫。</p>
+</li>
+<li>
+<p class="my-0"><strong>Webots 支援哪些主流程控制語言？各有何優缺點？</strong><br/>支援 C/C++、Python、Java、MATLAB。C/C++效能佳，Python易學，Java跨平台，MATLAB適合數學分析。</p>
+</li>
+<li>
+<p class="my-0"><strong>機器人控制器程式如何與其他程式（如資料記錄、遠端伺服器）進行通訊？</strong><br/>使用 TCP/IP、UDP 或 WebSocket 協定進行資料交換。</p>
+</li>
+<li>
+<p class="my-0"><strong>Webots 的模擬世界中燈光和陰影設定如何影響感測器或相機的數據？</strong><br/>影響相機影像亮度與對比度，可能影響視覺感測器辨識。</p>
+</li>
+<li>
+<p class="my-0"><strong>如何在 Webots 中調整機器人或感測器的物理參數（如質量、摩擦係數）？</strong><br/>修改物件 physics 節點的 mass、friction 等屬性。</p>
+</li>
+<li>
+<p class="my-0"><strong>請說明如何使用 Webots 的 Console 與 Debug 工具協助程式錯誤排除。</strong><br/>Console 顯示輸出與錯誤，Debug 可設定斷點與單步執行。</p>
+</li>
+<li>
+<p class="my-0"><strong>Tutorial1、2 裡的機器人遇到物體時，碰撞偵測機制如何運作？</strong><br/>物理引擎偵測碰撞事件，感測器資料反映碰撞狀況，控制器可調整行為。</p>
+</li>
+<li>
+<p class="my-0"><strong>若要將 Webots 模擬結果導出並進行數據分析，你會選擇哪些方法與工具？</strong><br/>在控制器中記錄感測器數據與狀態至檔案，使用 Python、MATLAB 等工具進行後續分析。</p>
+</li>
+</ol>
+<h4 class="mb-xs mt-5 text-base font-[500] first:mt-0 dark:font-[475]"></h4>
+<h2>HW2 task3</h2>
 <p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p><span style="background-color: #00ffff;">利用fourbar_slvs資料夾內零件，繪製link-1</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/xYumahfXxqc" width="560"></iframe></p>
@@ -324,9 +421,9 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span style="background-color: #ffcc00;">詢問優化建議:</span></p>
 <p><span>這段優化建議提醒我們應避免 kinematic loop，透過簡化結構或使用 Webots 支援的 Constraint 來提升模擬穩定性。同時，將 EXTERNPROTO 和 CAD 模型本地化，確保路徑正確，避免載入失敗。明確設定每個 Solid 的質量與慣性，增強物理真實感。基座物件應補齊 boundingObject 和 Physics 屬性，並且命名上應有意義且唯一，方便維護與擴展。這些措施可提升模擬的穩定性與可維護性。</span></p>
 <p><span><span style="background-color: #ffcc00;">hw2作業題問解答:</span></span></p>
-<p>Tutorial3：地面顏色感測與行為控制</p>
-<p></p>
-<p>主要學習目標：學習利用 ground sensor 偵測地面顏色，並根據顏色改變機器人行為。</p>
+<p><span><span style="background-color: #ffcc00;"></span></span></p>
+<p><span style="background-color: #00ccff;">Tutorial3：地面顏色感測與行為控制</span></p>
+<p><br/> 主要學習目標：學習利用 ground sensor 偵測地面顏色，並根據顏色改變機器人行為。</p>
 <p>偵測方式：使用安裝於機器人底部的 ground sensor 讀取反射光強度。</p>
 <p>感測器作用：辨識地面顏色（如黑、白、灰），用於巡線或標記辨識。</p>
 <p>程式操作：啟用感測器並讀取數值，根據數值判斷顏色。</p>
@@ -335,7 +432,7 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p>sampling period 設定：啟用感測器時指定取樣週期。</p>
 <p>判斷錯誤原因：感測器未校正、光線變化、材質反光異常、門檻設定不當。</p>
 <p></p>
-<p>Tutorial4：距離感測與避障行為</p>
+<p><span style="background-color: #00ccff;">Tutorial4：距離感測與避障行為</span></p>
 <p><br/> 核心任務：利用距離感測器偵測障礙物，實作自動避障。</p>
 <p>偵測方式：e-puck 配備多個紅外線距離感測器，取得周圍障礙物距離。</p>
 <p>DistanceSensor 運作：回傳與障礙物距離成比例的數值（0~4096）。</p>
@@ -346,8 +443,8 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p>多感測器考量：提供完整環境資訊，提升避障精確度。</p>
 <p>故障排除：檢查感測器啟用、校正門檻、演算法優化、馬達控制。</p>
 <p></p>
-<p>Tutorial5：多感測器整合與複雜任務</p>
-<p>主題：結合多種感測器，實作複雜任務與有限狀態機（FSM）。</p>
+<p><span style="background-color: #00ccff;">Tutorial5：多感測器整合與複雜任務</span></p>
+<p><br/> 主題：結合多種感測器，實作複雜任務與有限狀態機（FSM）。</p>
 <p>多感測器反應：根據地面顏色與障礙物狀態調整行為。</p>
 <p>感測器融合：同時讀取多感測器數值，設計 FSM 進行狀態切換。</p>
 <p>巡線與避障結合：巡線為主，遇障礙物暫停巡線避障。</p>
@@ -368,7 +465,8 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span style="background-color: #00ffff;">hw3-webots操作影片</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/CScIgcI-6Ks" width="560"></iframe></p>
 <p><span style="background-color: #ffcc00;">hw3作業題問解答:</span></p>
-<p>Tutorial6 相關提問</p>
+<p><span style="background-color: #ffcc00;"></span></p>
+<p><span style="background-color: #00ccff;">Tutorial6 相關提問</span></p>
 <p></p>
 <p>主要學習主題?</p>
 <p>Tutorial6 主要學習如何在 Webots 中為 e-puck 機器人新增攝影機（Camera）裝置，並透過程式控制攝影機，取得影像資料，進而讓機器人能依據視覺資訊做出反應。</p>
@@ -391,7 +489,7 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p>若攝影機影像顯示異常，可能的原因?</p>
 <p>常見原因有：Camera 節點未正確加入、名稱不符、未啟用、解析度設置錯誤、Webots 需重啟等。</p>
 <p></p>
-<p>Tutorial7 相關提問</p>
+<p><span style="background-color: #00ccff;">Tutorial7 相關提問</span></p>
 <p></p>
 <p>核心任務?</p>
 <p>讓 e-puck 機器人利用攝影機偵測並辨識顏色，進而做出相應行為。</p>
@@ -414,7 +512,7 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p>Tutorial7 能否應用於現實世界的機器人？需做哪些調整？</p>
 <p>可應用於現實機器人，但需考慮真實攝影機的雜訊、光源變化、鏡頭畸變等，並進行相應的校正與調整。</p>
 <p></p>
-<p>Tutorial8 相關提問</p>
+<p><span style="background-color: #00ccff;">Tutorial8 相關提問</span></p>
 <p></p>
 <p>主要學習目標?</p>
 <p>學習 Supervisor 控制器的使用，實現對多個機器人或物件的監控與管理。</p>
@@ -468,7 +566,7 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span style="background-color: #00ffff;">紅色連桿旋轉角度為個人學號最後兩碼:13</span></p>
 <p><span style="background-color: #00ffff;">exam1 webots操作影片</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/qpJgXUi2FlQ" width="560"></iframe></p>
-<p>hw2</p><h2>Exam2</h2>
+<p></p><h2>Exam2</h2>
 <p>Exam2 (10%): 利用 CAD 零組件建立模擬場景</p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam2 - 41223113</p>
 <p><span style="background-color: #00ffff;">個人學號最後兩碼:13，<span>最短桿的長度,設為 1.13 m，角度為13 degree</span></span></p>
@@ -490,7 +588,8 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/z-KECbSe5Vc" width="560"></iframe></p>
 <p><span style="background-color: #ffcc00;">exam3-3:</span></p>
 <p><span style="color: #000000; background-color: #ffcc00;">重要補充:</span></p>
-<p><span>由於沒有ipv6所以由其中一位組員為中心製作其餘在旁一起協助</span></p><h1>Final</h1>
+<p><span>由於沒有ipv6所以由其中一位組員為中心製作其餘在旁一起協助</span></p>
+<h1>Final</h1>
 <p><span>期末協同專案執行過程影片、簡報與 PDf 報告檔案 (六人一組) (30%)</span></p>
 <p><span>題目: <span style="background-color: #ccffcc;">Webots 動態投籃模擬系統的協同設計</span></span></p>
 <p><span>說明: </span></p>

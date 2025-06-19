@@ -170,9 +170,9 @@ img.add_border {
 <p><span style="background-color: #ffcc00;">詢問優化建議:</span></p>
 <p><span>這段優化建議提醒我們應避免 kinematic loop，透過簡化結構或使用 Webots 支援的 Constraint 來提升模擬穩定性。同時，將 EXTERNPROTO 和 CAD 模型本地化，確保路徑正確，避免載入失敗。明確設定每個 Solid 的質量與慣性，增強物理真實感。基座物件應補齊 boundingObject 和 Physics 屬性，並且命名上應有意義且唯一，方便維護與擴展。這些措施可提升模擬的穩定性與可維護性。</span></p>
 <p><span><span style="background-color: #ffcc00;">hw2作業題問解答:</span></span></p>
-<p>Tutorial3：地面顏色感測與行為控制</p>
-<p></p>
-<p>主要學習目標：學習利用 ground sensor 偵測地面顏色，並根據顏色改變機器人行為。</p>
+<p><span><span style="background-color: #ffcc00;"></span></span></p>
+<p><span style="background-color: #00ccff;">Tutorial3：地面顏色感測與行為控制</span></p>
+<p><br/> 主要學習目標：學習利用 ground sensor 偵測地面顏色，並根據顏色改變機器人行為。</p>
 <p>偵測方式：使用安裝於機器人底部的 ground sensor 讀取反射光強度。</p>
 <p>感測器作用：辨識地面顏色（如黑、白、灰），用於巡線或標記辨識。</p>
 <p>程式操作：啟用感測器並讀取數值，根據數值判斷顏色。</p>
@@ -181,7 +181,7 @@ img.add_border {
 <p>sampling period 設定：啟用感測器時指定取樣週期。</p>
 <p>判斷錯誤原因：感測器未校正、光線變化、材質反光異常、門檻設定不當。</p>
 <p></p>
-<p>Tutorial4：距離感測與避障行為</p>
+<p><span style="background-color: #00ccff;">Tutorial4：距離感測與避障行為</span></p>
 <p><br/> 核心任務：利用距離感測器偵測障礙物，實作自動避障。</p>
 <p>偵測方式：e-puck 配備多個紅外線距離感測器，取得周圍障礙物距離。</p>
 <p>DistanceSensor 運作：回傳與障礙物距離成比例的數值（0~4096）。</p>
@@ -192,8 +192,8 @@ img.add_border {
 <p>多感測器考量：提供完整環境資訊，提升避障精確度。</p>
 <p>故障排除：檢查感測器啟用、校正門檻、演算法優化、馬達控制。</p>
 <p></p>
-<p>Tutorial5：多感測器整合與複雜任務</p>
-<p>主題：結合多種感測器，實作複雜任務與有限狀態機（FSM）。</p>
+<p><span style="background-color: #00ccff;">Tutorial5：多感測器整合與複雜任務</span></p>
+<p><br/> 主題：結合多種感測器，實作複雜任務與有限狀態機（FSM）。</p>
 <p>多感測器反應：根據地面顏色與障礙物狀態調整行為。</p>
 <p>感測器融合：同時讀取多感測器數值，設計 FSM 進行狀態切換。</p>
 <p>巡線與避障結合：巡線為主，遇障礙物暫停巡線避障。</p>
