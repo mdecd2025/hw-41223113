@@ -295,8 +295,8 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span style="background-color: #ffffff;">這段 Webots 世界檔雖然展現了多關節機械臂的結構設計，但在多重關節端點指向同一 Solid（如 link3）時，容易產生 kinematic loop，造成物理模擬不穩定。此外，外部控制器若未及時連線，機器人將無法正常運作。背景與光源資源依賴 GitHub 外部連結，若失效會影響場景完整性。物理參數未細緻設定，也可能影響模擬真實度。這些細節都提醒我們，設計複雜機械結構時需謹慎考慮模擬平台的限制與資源管理。</span></p>
 <p><span style="background-color: #ffcc00;">詢問建議:</span></p>
 <p><span style="background-color: #ffffff;"><span>建議將 EXTERNPROTO 檔案下載到本地，引用本地路徑以提升穩定性；關節命名與結構應明確區分，避免重名或錯誤引用；此外，可加入預設控制器，確保即使外部控制器未連接，機器人也能執行基本動作，提升模擬的便利性與穩定性。</span></span></p>
-<p></p>
-<h2>HW2 task3</h2>
+<p>hw1作業題問解答:</p>
+<p></p><h2>HW2 task3</h2>
 <p>HW2 (5%): <span style="background-color: #ffff00;">建立由 CAD 繪製零件組成的平面四連桿機構 Webots 模擬場景</span></p>
 <p><span style="background-color: #00ffff;">利用fourbar_slvs資料夾內零件，繪製link-1</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/xYumahfXxqc" width="560"></iframe></p>
@@ -323,17 +323,17 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span>這份 Webots 世界檔展示了四連桿機構的建模，但多重關節指向同一 Solid，容易形成 kinematic loop，Webots 物理引擎對此支援有限，模擬時常出現不穩定或異常。外部資源與本地檔案路徑若有誤，模型將無法完整載入，影響仿真效果。物理參數未細緻設定，也會降低模擬的真實性。這些問題提醒我們，在設計複雜結構時需特別注意模擬平台的限制、資源管理及參數設定，以確保仿真穩定且可重現。</span></p>
 <p><span style="background-color: #ffcc00;">詢問優化建議:</span></p>
 <p><span>這段優化建議提醒我們應避免 kinematic loop，透過簡化結構或使用 Webots 支援的 Constraint 來提升模擬穩定性。同時，將 EXTERNPROTO 和 CAD 模型本地化，確保路徑正確，避免載入失敗。明確設定每個 Solid 的質量與慣性，增強物理真實感。基座物件應補齊 boundingObject 和 Physics 屬性，並且命名上應有意義且唯一，方便維護與擴展。這些措施可提升模擬的穩定性與可維護性。</span></p>
-<p></p>
+<p><span>hw2作業題問解答:</span></p>
 <p><span></span></p>
-<p><span></span></p>
-<h2>HW3</h2>
+<p><span></span></p><h2>HW3</h2>
 <p>HW3 (20%):<span style="background-color: #ffff00;">建立 Webots 桌上籃球遊戲機模擬系統</span></p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 HW3 - 學員學號</p>
 <p><span style="background-color: #00ffff;">hw3作業壓縮檔:</span></p>
 <p><span><a href="/downloads/41223113-HW3.7z">/downloads/41223113-HW3.7z</a></span></p>
 <p><span style="background-color: #00ffff;">hw3-webots操作影片</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/CScIgcI-6Ks" width="560"></iframe></p>
-<h1>Midterm</h1>
+<p><span style="background-color: #ffcc00;">hw3作業題問解答:</span></p>
+<p><span><a href="/get_page/HW3/hw3-ans.txt">hw3-ans.txt</a></span></p><h1>Midterm</h1>
 <p>本課程所繳交的期中成績為學員自評之學習期望成績.</p>
 <p>期中考週的自評期望成績繳交流程:</p>
 <ol>
@@ -367,7 +367,7 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span style="background-color: #00ffff;">紅色連桿旋轉角度為個人學號最後兩碼:13</span></p>
 <p><span style="background-color: #00ffff;">exam1 webots操作影片</span></p>
 <p><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/qpJgXUi2FlQ" width="560"></iframe></p>
-<h2>Exam2</h2>
+<p>hw2</p><h2>Exam2</h2>
 <p>Exam2 (10%): 利用 CAD 零組件建立模擬場景</p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam2 - 41223113</p>
 <p><span style="background-color: #00ffff;">個人學號最後兩碼:13，<span>最短桿的長度,設為 1.13 m，角度為13 degree</span></span></p>
