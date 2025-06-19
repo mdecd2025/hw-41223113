@@ -617,7 +617,50 @@ ajax.get(url, oncomplete=on_complete)</pre>
 <p><span style="background-color: #ffff00;"><iframe allowfullscreen="allowfullscreen" height="314" src="//www.youtube.com/embed/l2Gec6rAl_o" width="560"></iframe></span></p>
 <p><span style="background-color: #ffcc00;">心得:</span></p>
 <p><span style="background-color: #ffffff;">再從slvs轉成obj的時候，因為blender轉檔的過程單位不一樣導致模擬過程中零件要對應的位置不一樣，所以模擬不出來，轉而使用程式碼修正確保單位一致，避免模擬過程中零件不轉動。</span></p>
-<h2>Exam3</h2>
+<p><span style="background-color: #ffcc00;"># mde.tw Exam2 相關提問詳細回答整理:</span></p>
+<p>## 場景基礎節點設定</p>
+<p>### 1. WorldInfo 節點的作用為何？<br/>WorldInfo 節點是 Webots 模擬世界的核心配置節點，定義模擬環境的基本物理參數，如重力、基本時間步長、物理引擎設定等。它確保整個模擬環境的物理行為一致性[1]。</p>
+<p>### 2. Viewpoint 節點設計時需考慮哪些參數？<br/>主要參數包括：<br/>- **position**：觀察點的 3D 位置座標<br/>- **orientation**：觀察角度與朝向（四元數表示）<br/>- **fieldOfView**：視野角度範圍<br/>- **near/far**：近遠平面剪裁距離</p>
+<p>### 3. TexturedBackground 與 TexturedBackgroundLight 在場景中的功能？<br/>- **TexturedBackground**：提供場景的背景環境，通常為天空盒或環境貼圖<br/>- **TexturedBackgroundLight**：與背景搭配的環境光源，確保場景有適當的整體照明</p>
+<p>### 4. 為什麼需要使用 EXTERNPROTO 來引用背景相關的 PROTO？<br/>從 Webots R2022b 開始，必須使用 EXTERNPROTO 聲明依賴關係，確保 PROTO 版本相容性和模組化管理。這可避免檔案遺失或版本衝突問題[1]。</p>
+<p>## CAD 零組件導入相關</p>
+<p>### 5. 場景中為何有兩個 BASE（BASE 與 BASE2）？<br/>在四連桿機構中，BASE 作為固定基座，BASE2 可能是另一個固定點或用於封閉運動鏈的約束點。多個 BASE 有助於建立複雜機構的多重約束關係[10]。</p>
+<p>### 6. CadShape 節點如何使用，其作用與限制為何？<br/>**使用方式**：<br/>```vrml<br/>CadShape {<br/> url ["../split_parts/base.obj"]<br/>}<br/>```<br/>**作用**：<br/>- 渲染來自外部 CAD 檔案的 3D 模型（支援 .dae 或 .obj 格式）<br/>- 可包含材質與紋理資訊</p>
+<p>**限制**：<br/>- 僅用於視覺顯示，無法用於碰撞檢測<br/>- 需搭配外部 .mtl 檔案來修改材質顏色[11]</p>
+<p>### 7. Mesh 作為 boundingObject 有什麼效果？<br/>Mesh 節點可同時用於視覺顯示和碰撞檢測。當作為 boundingObject 使用時，提供精確的幾何碰撞檢測，但計算複雜度較高，適合需要精確物理互動的場景[11]。</p>
+<p>### 8. 資料夾路徑 "../split_parts/" 的用途為何？<br/>此路徑指向存放分解後 CAD 零組件的目錄，通常包含從 CAD 軟體（如 Solvespace 或 Siemens NX）匯出的個別零件檔案（如 .obj 格式），方便 Webots 分別載入各零組件[11]。</p>
+<p>## 機器人結構與控制</p>
+<p>### 9. Robot 節點的結構和功能？<br/>Robot 節點是機器人系統的根節點，包含：<br/>- **children 陣列**：容納所有子節點（Solid、Shape、感測器、執行器等）<br/>- **controller 屬性**：指定控制程式<br/>- **name 屬性**：機器人識別名稱<br/>- 提供機器人的基本功能介面</p>
+<p>### 10. HingeJoint 節點在本結構中如何應用？<br/>HingeJoint 實現旋轉關節功能，在四連桿機構中：<br/>- JOINT1~JOINT4 分別連接各連桿<br/>- 提供單軸旋轉約束<br/>- 可搭配 RotationalMotor 實現動力驅動</p>
+<p>### 11. HingeJointParameters 的 axis 與 anchor 參數說明？<br/>- **axis**：旋轉軸的方向向量（如 [0 0 1] 表示 Z 軸）<br/>- **anchor**：旋轉中心點的座標位置，決定關節的旋轉中心</p>
+<p>### 12. RotationalMotor 的功能是什麼，如何與關節對應？<br/>RotationalMotor 提供旋轉動力，透過設定 velocity 控制旋轉速度。通常置於 HingeJoint 的 motor 欄位中，實現自動化運動控制[10]。</p>
+<p>## 結構設計與約束</p>
+<p>### 13. SolidReference 的用途與設計意義？<br/>SolidReference 用於建立封閉運動鏈約束，透過 solidName 屬性引用已存在的 Solid 節點，形成機構的閉合約束條件。這對四連桿等封閉機構至關重要[10]。</p>
+<p>### 14. 為什麼每個連桿（link）都需要 physics 與 boundingObject？<br/>- **physics**：定義物理屬性（質量、慣性等），確保正確的動力學模擬<br/>- **boundingObject**：定義碰撞檢測範圍，確保物理互動的準確性</p>
+<p>### 15. name 屬性在 Solid 與 Robot 節點中的差異？<br/>- **Robot 節點的 name**：用於控制器識別和多機器人場景中的區分<br/>- **Solid 節點的 name**：主要用於場景樹中的物件識別和 SolidReference 引用</p>
+<p>### 16. JOINT1~JOINT4 分別對應機構的哪個部位？<br/>在四連桿機構中：<br/>- **JOINT1**：BASE 與 LINK1 的連接點<br/>- **JOINT2**：LINK1 與 LINK2 的連接點 <br/>- **JOINT3**：LINK2 與 LINK3 的連接點<br/>- **JOINT4**：LINK3 與 BASE 的封閉約束點</p>
+<p>## 座標系統與定位</p>
+<p>### 17. anchor 參數對機構運動的實際影響？<br/>anchor 決定關節的旋轉中心，直接影響：<br/>- 連桿的運動軌跡<br/>- 機構的運動範圍<br/>- 各關節間的相對位置關係</p>
+<p>### 18. DEF 與 USE 的差異與用途？<br/>- **DEF**：定義可重複使用的節點，賦予名稱<br/>- **USE**：引用已定義的 DEF 節點，避免重複定義並節省記憶體</p>
+<p>### 19. 場景中 LINK1、LINK2、LINK3 的結構意義？<br/>代表四連桿機構中的三個可動連桿：<br/>- **LINK1**：第一連桿，連接 BASE 和 LINK2<br/>- **LINK2**：第二連桿，連接 LINK1 和 LINK3 <br/>- **LINK3**：第三連桿，完成與 BASE 的封閉約束</p>
+<p>## CAD 整合與檔案管理</p>
+<p>### 20. 為何要將外部 CAD 檔案（obj）導入 Webots？<br/>- 獲得精確的幾何外形<br/>- 保持與 CAD 設計的一致性<br/>- 實現視覺化與物理模擬的整合<br/>- 支援複雜幾何形狀的模擬</p>
+<p>### 21. 如何在 Webots 中檢查導入 CAD 物件的碰撞情形？<br/>- 透過 View 選單啟用碰撞檢測顯示<br/>- 觀察 boundingObject 的幾何範圍<br/>- 使用 Physics 節點的碰撞回饋功能<br/>- 在控制器中監控碰撞事件</p>
+<p>### 22. controller 屬性如何讓機器人執行指定程式？<br/>controller 屬性指定控制器程式的名稱，Webots 會：<br/>1. 在 controllers 目錄中尋找對應的程式檔案<br/>2. 啟動該程式作為獨立進程<br/>3. 建立通訊管道進行資料交換</p>
+<p>## 運動控制與參數調整</p>
+<p>### 23. 如果要更改關節旋轉範圍，該修改哪些參數？<br/>主要修改 HingeJointParameters 中的：<br/>- **minStop**：最小旋轉角度<br/>- **maxStop**：最大旋轉角度<br/>- **stopBounce**：碰撞反彈係數<br/>- **stopERP**：誤差修正參數</p>
+<p>### 24. 如何確保多個 link 結構組裝時不產生重疊？<br/>- 正確設定各 link 的 translation 和 rotation<br/>- 確保 anchor 點位置準確<br/>- 檢查 boundingObject 的幾何範圍<br/>- 使用 CAD 軟體進行裝配驗證</p>
+<p>### 25. 若要讓 LINK3 可由 JOINT3 控制，需注意哪些設定？<br/>- JOINT3 必須包含 RotationalMotor<br/>- 確保 LINK3 正確連接到 JOINT3 的 endPoint<br/>- 設定適當的 motor 參數（maxVelocity、maxTorque）<br/>- 在控制器中正確引用 motor 設備</p>
+<p>## 檔案結構與規範</p>
+<p>### 26. 機構結構層級在 VRML/WBT 檔案中的重要性？<br/>樹狀結構決定了：<br/>- 座標變換的繼承關係<br/>- 物理約束的作用範圍<br/>- 控制指令的傳遞路徑<br/>- 場景的邏輯組織</p>
+<p>### 27. 若 CAD 檔案位置錯誤或缺失，Webots 會怎麼處理？<br/>- 在 Console 顯示錯誤訊息<br/>- 以預設幾何體（如 Box）替代<br/>- 模擬可能無法正常啟動<br/>- 需要修正檔案路徑或補充缺失檔案</p>
+<p>### 28. 如何於場景內為各零件添加材質或調整外觀？<br/>**使用 Shape-Mesh 節點**：<br/>```vrml<br/>Shape {<br/> appearance Appearance {<br/> material Material {<br/> diffuseColor 1 0 0 # 紅色<br/> }<br/> }<br/> geometry Mesh {<br/> url ["../split_parts/link1.obj"]<br/> }<br/>}<br/>```</p>
+<p>**使用 CadShape 節點**：需要外部 .mtl 檔案進行材質控制[11]。</p>
+<p>### 29. Viewpoint 的 orientation 和 position 如何影響觀察？<br/>- **position [x y z]**：決定觀察點在 3D 空間中的位置<br/>- **orientation [x y z angle]**：決定觀察方向，影響場景的視角和透視效果</p>
+<p>### 30. 製作此一場景時，需注意哪些命名與結構規範？<br/>- 使用有意義的 DEF 名稱（如 BASE、LINK1 等）<br/>- 保持一致的命名慣例<br/>- 確保檔案路徑的相對性和可攜性<br/>- 遵循 Webots 的節點層級結構<br/>- 建立清晰的控制器與設備對應關係</p>
+<p>## 總結</p>
+<p>Exam2 的核心在於將 CAD 設計的零組件整合到 Webots 模擬環境中，關鍵技術包括：<br/>1. **檔案格式轉換**：從 CAD 軟體匯出 .obj 檔案<br/>2. **節點選擇**：CadShape（僅視覺）vs Mesh（視覺+碰撞）<br/>3. **結構組織**：正確的樹狀架構和約束關係<br/>4. **物理設定**：physics 和 boundingObject 的配置<br/>5. **座標系統**：translation、rotation、anchor 的精確設定</p>
+<p>這些技能為後續的機電模擬場景協同設計（Exam3）奠定了重要基礎[1][10][11]。</p><h2>Exam3</h2>
 <p>Exam3 (20%): Webots 機電模擬場景的協同設計</p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam3-1、2、3 - 41223113</p>
 <p><span style="background-color: #ffcc00;">exam3-1:</span></p>
